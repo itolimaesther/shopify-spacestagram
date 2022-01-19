@@ -4,11 +4,11 @@ import axios from 'axios';
 
 export const SpaceContext = createContext()
 
-const url = `https://api.nasa.gov/planetary/apod?api_key=${process.env.REACT_APP_API_Key}&start_date=2019-01-19&end_date=2021-01-19`;
+const url = `https://api.nasa.gov/planetary/apod?api_key=${process.env.REACT_APP_API_Key}&start_date=2019-01-19&end_date=2020-01-19`;
 
 
 function SpaceContextProvider({children}) {
-  
+
   const [spaceData, setSpaceData] = useState([]);
   const [isLoading, setIsLoading] = useState(false)
   const [likes, setLikes] = useState(0)
@@ -22,16 +22,17 @@ function SpaceContextProvider({children}) {
           const newSpace = []
           newSpace.push(data);
           setIsLoading(false);
-          localStorage.setItem('likes', JSON.stringify(newSpace))
-          let newLocalSpace = JSON.parse(localStorage.getItem('likes'))
-          setSpaceData(newLocalSpace);
+          setSpaceData(newSpace);
+          localStorage.setItem('likes', JSON.stringify(likes))
+          let newLocalLikes = JSON.parse(localStorage.getItem('likes'))
+          setLikes(newLocalLikes)
         })
         .catch(function(error){
           console.log(error)
         })
     }
     getData()
-  }, [])
+  }, [likes])
 
 
 

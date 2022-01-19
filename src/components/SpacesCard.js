@@ -4,7 +4,6 @@ import { css } from "@emotion/react";
 import ClipLoader from "react-spinners/ClipLoader";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHeart, faShareAlt} from '@fortawesome/free-solid-svg-icons'
-import addNotification from 'react-push-notification';
 
 
 const SpacesCard = () => {

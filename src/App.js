@@ -13,14 +13,7 @@ function App() {
     <SpaceContextProvider>
       <div className="App">
         <header>
-          <span>
-            <span>
-              Shopify <img src="./asset/shopify-logo.png" alt="shopify logo" />
-            </span>
-            <span>
-              Spacestagram <img src="./asset/spaces.png" alt="shopify logo" />
-            </span>
-            </span>
+          <h1>Spacestagram</h1>
           <p>Brought to you by NASA's Astronomy Photos of the Day(APOD) API</p>
         </header>
         <main>

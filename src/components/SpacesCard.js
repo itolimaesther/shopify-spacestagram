@@ -36,13 +36,6 @@ const SpacesCard = () => {
                 setLike(true)
             }
         
-        
-        // addNotification({
-        //     message: `${likes}`,
-        //     theme:'red',
-        //     duration: 1000,
-        //     native: true
-        // })
     }
 
     

@@ -1,17 +1,17 @@
-import React, { useState, useEffect, createContext } from 'react';
+import React, { useState, useEffect, createContext, useMemo } from 'react';
 import axios from 'axios';
 
 
 export const SpaceContext = createContext()
 
-const url = `https://api.nasa.gov/planetary/apod?api_key=${process.env.REACT_APP_API_Key}&start_date=2019-01-19&end_date=2020-01-19`;
+const url = `https://api.nasa.gov/planetary/apod?api_key=${process.env.REACT_APP_API_Key}&start_date=2022-01-1&end_date=2022-01-19`;
 
 
 function SpaceContextProvider({children}) {
 
   const [spaceData, setSpaceData] = useState([]);
   const [isLoading, setIsLoading] = useState(false)
-  const [likes, setLikes] = useState(0)
+  // const [likes, setLikes] = useState(0)
 
   useEffect(() => {
     const getData = async () => {
@@ -21,22 +21,28 @@ function SpaceContextProvider({children}) {
           const data = res.data;
           const newSpace = []
           newSpace.push(data);
+          
+          // console.log(newSpace)
           setIsLoading(false);
           setSpaceData(newSpace);
-          localStorage.setItem('likes', JSON.stringify(likes))
-          let newLocalLikes = JSON.parse(localStorage.getItem('likes'))
-          setLikes(newLocalLikes)
         })
         .catch(function(error){
           console.log(error)
         })
     }
     getData()
-  }, [likes])
+  }, [])
+
+  useEffect(() => {
+    let newLocalLikes = JSON.parse(localStorage.getItem('likes'))
+    if(newLocalLikes.length > 0){
+      
+    }
+  })
 
 
 
-  const value = {spaceData, likes, setLikes, isLoading}
+  const value = {spaceData, isLoading}
 
   return (
       <SpaceContext.Provider value={value}>

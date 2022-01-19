@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useState, useContext } from 'react';
 import { SpaceContext } from '../context/SpaceContext'; 
 import { css } from "@emotion/react";
 import ClipLoader from "react-spinners/ClipLoader";
@@ -9,7 +9,10 @@ import addNotification from 'react-push-notification';
 
 const SpacesCard = () => {
 
-    const { spaceData, isLoading, likes, setLikes } = useContext(SpaceContext)
+    const { spaceData, isLoading } = useContext(SpaceContext)
+
+    const [like, setLike] = useState(false)
+    
     
     const override = css`
         display: block;
@@ -18,19 +21,28 @@ const SpacesCard = () => {
         border-color: #ffffff;
     `;
 
-    const addLike = () => {
+    const addLike = (title) => {
+
         let newLike = JSON.parse(localStorage.getItem("likes"))
-        newLike = likes + 1
-        localStorage.setItem("likes", JSON.stringify(newLike))
-        setLikes({
-            likes: newLike
-        })
-        addNotification({
-            message: `${likes}`,
-            theme:'red',
-            duration: 1000,
-            native: true
-        })
+            if(newLike === null){
+                let newLikeArr = []
+                newLikeArr.push(title)
+                localStorage.setItem("likes", JSON.stringify(newLikeArr))
+                setLike(true)
+            }else{
+                let result = [...newLike, title]
+                localStorage.setItem("likes", JSON.stringify(result))
+                console.log(result)
+                setLike(true)
+            }
+        
+        
+        // addNotification({
+        //     message: `${likes}`,
+        //     theme:'red',
+        //     duration: 1000,
+        //     native: true
+        // })
     }
 
     
@@ -47,14 +59,16 @@ const SpacesCard = () => {
                 <div className='space-info'>
                     <h1>{item.copyright}</h1>
                     <p>{item.explanation}</p>
-                </div>
-                <div className='icons'>
-                    <div>
-                        <FontAwesomeIcon onClick={addLike()} className='heart' icon={faHeart} />
-                        <p>{likes}</p>
-                    </div>
-                    <div>
-                        <FontAwesomeIcon  className='share' icon={faShareAlt} />
+                    <div className='icons'>
+                        <div>
+                            {
+                                JSON.parse(localStorage.getItem("likes")) && JSON.parse(localStorage.getItem("likes")).includes(item.title) ? (
+                                    <FontAwesomeIcon onClick={() => addLike(item.title)} className='heart' icon={faHeart} style={{color: "blue"}} />) : (<FontAwesomeIcon onClick={() => addLike(item.title)} className='heart' icon={faHeart} style={{color: "red"}} /> )
+                            }
+                        </div>
+                        <div>
+                            <FontAwesomeIcon  className='share' icon={faShareAlt} />
+                        </div>
                     </div>
                 </div>
             </div>

@@ -33,12 +33,7 @@ function SpaceContextProvider({children}) {
     getData()
   }, [])
 
-  useEffect(() => {
-    let newLocalLikes = JSON.parse(localStorage.getItem('likes'))
-    if(newLocalLikes.length > 0){
-      
-    }
-  })
+
 
 
 

@@ -1,38 +1,83 @@
-.App {
+header{
+  color: #fff;
   text-align: center;
+  padding: 20px 10px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+header span span{
+  width: 30%;
+  font-size: 20px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+header p{
+  font-size: 25px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+main{
+  margin: 0 auto;
+  padding: 80px 0px;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-self: center;
+  flex-wrap: wrap;
+  width: 80%;
+  height: 100%;
 }
 
-.App-link {
-  color: #61dafb;
+.space-wrapper{
+  width: 40%;
+  border-radius: 12px;
+  background-color: #fff;
+  margin-bottom: 15px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+
+.space-img{
+  width: 100%;
+  border-radius: 12px 12px 0 0;
+}
+
+
+
+.space-info{
+  padding: 2px 16px;
+}
+
+.space-info p {
+  font-size: 14px;
+}
+
+.cards-container{
+  margin: 0 auto;
+}
+
+.icons{
+  display: flex;
+  flex-direction: row;
+  justify-self: end;
+}
+
+.heart .share{
+  padding: 12px;
+  width: 20px;
+  height: 20px;
+}
+
+.heart{
+  border: 2px solid #000;
+  margin-right: 15px;
+}
+
+.heart:hover{
+  border-color: rgb(187, 10, 10);
+}
+
+.share{
+  border: 2px solid #000;
+}
+
+.share:hover{
+  border-color: rgb(4, 32, 192);
 }

@@ -1,24 +1,34 @@
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
+import SpacesCard from './components/SpacesCard';
+import SpaceContextProvider from './context/SpaceContext';
+import { Notifications } from 'react-push-notification';
+
+
 
 function App() {
+  
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <SpaceContextProvider>
+      <div className="App">
+        <header>
+          <span>
+            <span>
+              Shopify <img src="./asset/shopify-logo.png" alt="shopify logo" />
+            </span>
+            <span>
+              Spacestagram <img src="./asset/spaces.png" alt="shopify logo" />
+            </span>
+            </span>
+          <p>Brought to you by NASA's Astronomy Photos of the Day(APOD) API</p>
+        </header>
+        <main>
+          <Notifications />
+          <SpacesCard />
+        </main>
+      </div>
+    </SpaceContextProvider>
   );
 }
 

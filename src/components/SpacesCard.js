@@ -32,7 +32,7 @@ const SpacesCard = () => {
                 let result = [...newLike, title]
                 localStorage.setItem("likes", JSON.stringify(result))
                 console.log(result)
-                setLike(true)
+                setLike(false)
             }
         
     }
@@ -50,12 +50,14 @@ const SpacesCard = () => {
                 <img className='space-img' src={item.hdurl} alt={item.title} />
                 <div className='space-info'>
                     <h1>{item.copyright}</h1>
+                    <p>{item.date}</p>
                     <p>{item.explanation}</p>
                     <div className='icons'>
+                        
                         <div>
                             {
                                 JSON.parse(localStorage.getItem("likes")) && JSON.parse(localStorage.getItem("likes")).includes(item.title) ? (
-                                    <FontAwesomeIcon onClick={() => addLike(item.title)} className='heart' icon={faHeart} style={{color: "blue"}} />) : (<FontAwesomeIcon onClick={() => addLike(item.title)} className='heart' icon={faHeart} style={{color: "red"}} /> )
+                                    <FontAwesomeIcon  onClick={() => addLike(item.title)}  className="heart" icon={faHeart} style={{color: "black", borderColor: "black"}} />) : (<FontAwesomeIcon onClick={() => addLike(item.title)} className='heart' icon={faHeart} style={{color: "red", borderColor: "red"}} /> )
                             }
                         </div>
                         <div>
